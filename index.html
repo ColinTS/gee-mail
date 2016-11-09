@@ -1,11 +1,64 @@
-<html>
+<!DOCTYPE html>
+<html lang="en"n>
 	<head>
+        <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
+    <script>
+      window.onload = function(){
+        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE.
+        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+       
+			 // Loop goes through emails and creats divs for subject, date, sender, and body
+			 for(var i = 0; i < window.geemails.length; i++ ) {
+			 	
+			 	//email container
+				var emailContainer = document.createElement("div");
+				emailContainer.class = "emailBox";
+				emailHere.appendChild(emailContainer);
+				
+				//date
+				var dateField = document.createElement("div");
+				dateField.className = "date";
+				dateField.innerHTML = window.geemails[i].date;
+				emailContainer.appendChild(dateField);
+				 
+				//subject
+				var subjectField = document.createElement("div");
+				subjectField.className = "subject";
+				subjectField.innerHTML = window.geemails[i].subject;
+				emailContainer.appendChild(subjectField);
+				
+				//sender
+				var senderField = document.createElement("div");
+				senderField.className = "sender";
+				senderField.innerHTML = window.geemails[i].sender;
+				emailContainer.appendChild(senderField);
+				
+				//body
+				var bodyField = document.createElement("div");
+				bodyField.className = "body";
+				bodyField.innerHTML = window.geemails[i].body;
+				emailContainer.appendChild(bodyField);
+			
+			 }
+			 
+			 
+     		
+      };
+    </script>
 	</head>
 	<body>
+        <div class = "header">
+            <h1 class="title">Gee-Mail</h1>
+        </div>
 		<div class="container" id="main">
-			Build Me!
+			<div id ="emailHere">
+				<div class ="date"></div>
+				<div class ="sender"></div>
+				<div class ="subject"></div>
+				<div class ="body"></div>
+			</div>
 		</div>
 	</body>
 </html>
