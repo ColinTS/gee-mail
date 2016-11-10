@@ -9,7 +9,9 @@
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE.
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
        
-			 // Loop goes through emails and creats divs for subject, date, sender, and body
+			 
+			function newMessage(){
+				// Loop goes through emails and creats divs for subject, date, sender, and body
 			 for(var i = 0; i < window.geemails.length; i++ ) {
 			 	
 			 	//email container
@@ -40,11 +42,45 @@
 				bodyField.className = "body";
 				bodyField.innerHTML = window.geemails[i].body;
 				emailContainer.appendChild(bodyField);
+				 
+				//inbox counter
+				document.getElementById('counter').innerHTML = "You have " + window.geemails.length + " messages";
+				
 			
 			 }
-			 
-			 
+			
+		}
+				
+			
+			newMessage();
+				
+
+				
+			//interval for loading new messages
+			function addNewMessage() {
+				setInterval(function(){window.geemails.push(getNewMessage());newMessage();}, 3000);
+			}
      		
+			addNewMessage();
+				
+							//hiding and showing body message upon click
+			var messageBox = document.getElementsByClassName("subject");
+				
+			for (var i = 0; i < messageBox.length; i++){
+				messageBox[i].addEventListener("click", toggleMessage);
+			}
+			
+				function toggleMessage() {
+					var showMessage = document.getElementsByClassName('body');
+					 for (var i = 0; i < showMessage.length; i++) {
+					if(showMessage[i].style.display === 'none'){
+						showMessage[i].style.display = "block";
+					}	else {
+						showMessage[i].style.display = "none";
+					}
+				}
+				}
+										
       };
     </script>
 	</head>
@@ -52,6 +88,7 @@
         <div class = "header">
             <h1 class="title">Gee-Mail</h1>
         </div>
+				<div id = "counter"></div>
 		<div class="container" id="main">
 			<div id ="emailHere">
 				<div class ="date"></div>
