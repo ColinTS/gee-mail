@@ -15,33 +15,34 @@
 			 for(var i = 0; i < window.geemails.length; i++ ) {
 			 	
 			 	//email container
-				var emailContainer = document.createElement("div");
-				emailContainer.class = "emailBox";
-				emailHere.appendChild(emailContainer);
+				var div = document.createElement("div");
 				
 				//date
-				var dateField = document.createElement("div");
+				var dateField = document.createElement("h1");
 				dateField.className = "date";
 				dateField.innerHTML = window.geemails[i].date;
-				emailContainer.appendChild(dateField);
+				div.appendChild(dateField);
 				 
 				//subject
-				var subjectField = document.createElement("div");
+				var subjectField = document.createElement("h1");
 				subjectField.className = "subject";
 				subjectField.innerHTML = window.geemails[i].subject;
-				emailContainer.appendChild(subjectField);
+				div.appendChild(subjectField);
 				
 				//sender
-				var senderField = document.createElement("div");
+				var senderField = document.createElement("h1");
 				senderField.className = "sender";
 				senderField.innerHTML = window.geemails[i].sender;
-				emailContainer.appendChild(senderField);
+				div.appendChild(senderField);
 				
 				//body
-				var bodyField = document.createElement("div");
+				var bodyField = document.createElement("p");
 				bodyField.className = "body";
 				bodyField.innerHTML = window.geemails[i].body;
-				emailContainer.appendChild(bodyField);
+				div.appendChild(bodyField);
+				 
+				//Separate message content into containers
+				document.getElementById("main").appendChild(div);
 				 
 				//inbox counter
 				document.getElementById('counter').innerHTML = "You have " + window.geemails.length + " messages";
@@ -53,12 +54,14 @@
 				
 			
 			newMessage();
-				
+			
 
 				
 			//interval for loading new messages
 			function addNewMessage() {
-				setInterval(function(){window.geemails.push(getNewMessage());newMessage();}, 3000);
+				setInterval(function(){
+					window.geemails.push(getNewMessage());newMessage();
+				}, 3000);
 			}
      		
 			addNewMessage();
@@ -89,13 +92,8 @@
             <h1 class="title">Gee-Mail</h1>
         </div>
 				<div id = "counter"></div>
+		
 		<div class="container" id="main">
-			<div id ="emailHere">
-				<div class ="date"></div>
-				<div class ="sender"></div>
-				<div class ="subject"></div>
-				<div class ="body"></div>
-			</div>
 		</div>
 	</body>
 </html>

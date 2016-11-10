@@ -7,12 +7,17 @@ body {
 	padding-right: 5%;
 }
 
-#emailHere {
+#main {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
 	justify-content: space-between;
 	padding: 20px;
+	
+}
+
+#main div {
+	border-bottom: 1px solid #e8e9e9;
 	
 }
 
