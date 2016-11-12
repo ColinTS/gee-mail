@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en"n>
 	<head>
-        <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
     <script>
       window.onload = function(){
-        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE.
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-       
 			 
 			function newMessage(){
 				// Loop goes through emails and creats divs for subject, date, sender, and body
-			 for(var i = 0; i < window.geemails.length; i++ ) {
+			 	var i = 0;
+				while(i < window.geemails.length) {
 			 	
 			 	//email container
 				var div = document.createElement("div");
@@ -45,9 +44,9 @@
 				document.getElementById("main").appendChild(div);
 				 
 				//inbox counter
-				document.getElementById('counter').innerHTML = "You have " + window.geemails.length + " messages";
+				document.getElementById('counter').innerHTML = "You have " + document.getElementsByClassName("date").length + " messages";
 				
-			
+				window.geemails.shift();
 			 }
 			
 		}
@@ -66,23 +65,9 @@
      		
 			addNewMessage();
 				
-							//hiding and showing body message upon click
-			var messageBox = document.getElementsByClassName("subject");
-				
-			for (var i = 0; i < messageBox.length; i++){
-				messageBox[i].addEventListener("click", toggleMessage);
-			}
-			
-				function toggleMessage() {
-					var showMessage = document.getElementsByClassName('body');
-					 for (var i = 0; i < showMessage.length; i++) {
-					if(showMessage[i].style.display === 'none'){
-						showMessage[i].style.display = "block";
-					}	else {
-						showMessage[i].style.display = "none";
-					}
-				}
-				}
+			$('div').click(function(){
+      $('.body').show();
+});
 										
       };
     </script>
@@ -94,6 +79,7 @@
 				<div id = "counter"></div>
 		
 		<div class="container" id="main">
+			<div class='body'></div>
 		</div>
 	</body>
 </html>
