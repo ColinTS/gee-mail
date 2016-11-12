@@ -16,6 +16,7 @@
 			 	//email container
 				var div = document.createElement("div");
 				
+				
 				//date
 				var dateField = document.createElement("h1");
 				dateField.className = "date";
@@ -47,6 +48,10 @@
 				document.getElementById('counter').innerHTML = "You have " + document.getElementsByClassName("date").length + " messages";
 				
 				window.geemails.shift();
+					
+				$('div').click(function(){
+      	$(this).children('.body').show();
+				});
 			 }
 			
 		}
@@ -66,7 +71,7 @@
 			addNewMessage();
 				
 			$('div').click(function(){
-      $('.body').show();
+      $(this).children('.body').show();
 });
 										
       };
@@ -79,7 +84,7 @@
 				<div id = "counter"></div>
 		
 		<div class="container" id="main">
-			<div class='body'></div>
+			
 		</div>
 	</body>
 </html>
